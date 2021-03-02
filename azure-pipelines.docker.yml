@@ -4,8 +4,10 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  imageName: 'pythonsample:$(Build.BuildId)'
-  # define two more variables dockerId and dockerPassword in the build pipeline in UI
+- group: 'docker_secrets' #dockerId and dockerPassword defined in group
+- name: 'imageName'
+  value: 'pythonsample:$(Build.BuildId)' 
+  
 
 steps:
 - task: UsePythonVersion@0
